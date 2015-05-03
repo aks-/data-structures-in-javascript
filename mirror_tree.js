@@ -19,4 +19,3 @@ bst.prototype.mirrorMe = function() {
     this.right = temp;
   });
 }
-

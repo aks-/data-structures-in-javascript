@@ -25,7 +25,7 @@ BST.prototype = {
         } else {
           current = current.left;
         }
-      } else if (current.right < item) {
+      } else if (current.item < item) {
         if (current.right == null) {
           current.right = node;
           break;

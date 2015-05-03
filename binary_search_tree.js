@@ -48,10 +48,24 @@ BST.prototype = {
     }
   },
 
-  traverseInorder: function() {
-    this.inOrder(this._root, function() {
-      console.log(this.item);
-    });
+  postOrder: function(node, fn) {
+    if (node.left != null) {
+      this.postOrder(node.left, fn);
+    }
+    if (node.right != null) {
+      this.postOrder(node.right, fn);
+    }
+    fn.call(node);
+  },
+
+  preOrder: function(node, fn) {
+    fn.call(node);
+    if (node.left != null) {
+      this.postOrder(node.left, fn);
+    }
+    if (node.right != null) {
+      this.postOrder(node.right, fn);
+    }
   }
 }
 

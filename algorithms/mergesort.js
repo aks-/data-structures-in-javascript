@@ -35,6 +35,4 @@ function merge(leftPart, rightPart) {
     return auxilaryArray;
 }
 
-module.exports = function () {
-    return mergeSort(array);
-};
+module.exports = mergeSort;

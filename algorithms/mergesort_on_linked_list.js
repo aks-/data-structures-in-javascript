@@ -6,6 +6,7 @@ function sort() {
 
 function mergeSort(first, last) {
     if (first == null) return null;
+
     if (first == last) return {
         item: first.item,
         next: null,
@@ -19,9 +20,7 @@ function mergeSort(first, last) {
 }
 
 function partition(first, last) {
-    var first = first;
-    var last = last;
-        while (first != last && first.next != last) {
+    while (first != last && first.next != last) {
         first = first.next;
         last = last.prev;
     }
@@ -29,86 +28,40 @@ function partition(first, last) {
 }
 
 function merge(leftPart, rightPart) {
-    var auxilaryList = null;
-    var start;
+    var auxiliaryList = null;
 
     while (leftPart != null && rightPart != null) {
+        var item;
         if (leftPart.item < rightPart.item) {
-            if (auxilaryList == null) {
-                auxilaryList = {
-                    item: leftPart.item,
-                    next: null,
-                    prev: null
-                }
-                start = auxilaryList;
-            } else {
-                auxilaryList.next = {
-                    item: leftPart.item,
-                    next: null,
-                    prev: auxilaryList
-                }
-                auxilaryList = auxilaryList.next;
-            }
+            item = leftPart.item;
             leftPart = leftPart.next;
-        } else {
-            if (auxilaryList == null) {
-                auxilaryList = {
-                    item: rightPart.item,
-                    next: null,
-                    prev: null
-                }
-                start = auxilaryList;
-            } else {
-                auxilaryList.next = {
-                    item: rightPart.item,
-                    next: null,
-                    prev: auxilaryList
-                }
-                auxilaryList = auxilaryList.next;
-            }
+        }else{
+            item = rightPart.item;
             rightPart = rightPart.next;
         }
+        auxiliaryList = {
+            item: item,
+            next: null,
+            prev: auxiliaryList
+        };
     }
 
-    while (leftPart == null && rightPart != null) {
-        if (auxilaryList == null) {
-            auxilaryList = {
-                item: rightPart.item,
-                next: null,
-                prev: null
-            }
-            start = auxilaryList;
-        } else {
-            auxilaryList.next = {
-                item: rightPart.item,
-                next: null,
-                prev: auxilaryList
-            }
-            auxilaryList = auxilaryList.next;
-        }
-        rightPart =rightPart.next;
+    var rest = leftPart != null? leftPart : rightPart;
+
+    while (rest != null) {
+        auxiliaryList = {
+            item: rest.item,
+            next: null,
+            prev: auxiliaryList
+        };
+        rest = rest.next;
     }
 
-    while (rightPart == null && leftPart != null) {
-        if (auxilaryList == null) {
-            auxilaryList = {
-                item: leftPart.item,
-                next: null,
-                prev: null
-            }
-            start = auxilaryList;
-        } else {
-            auxilaryList.next = {
-                item: leftPart.item,
-                next: null,
-                prev: auxilaryList
-            }
-            auxilaryList = auxilaryList.next;
-        }
-        leftPart = leftPart.next;
+    while(auxiliaryList != null && auxiliaryList.prev != null){
+        auxiliaryList.prev.next = auxiliaryList;
+        auxiliaryList = auxiliaryList.prev;
     }
-
-    return start;
+    return auxiliaryList;
 }
 
 function print(node) {

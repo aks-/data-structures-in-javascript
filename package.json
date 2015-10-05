@@ -1,0 +1,32 @@
+{
+  "name": "data-structures-in-javascript",
+  "version": "1.0.0",
+  "description": "Data structures in JS",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "find . -name '*test.js' | xargs tape"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aks-/data-structures-in-javascript.git"
+  },
+  "keywords": [
+    "Data",
+    "Structures",
+    "JS",
+    "BFS",
+    "DFS"
+  ],
+  "author": "Ashok",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aks-/data-structures-in-javascript/issues"
+  },
+  "homepage": "https://github.com/aks-/data-structures-in-javascript#readme",
+  "dependencies": {
+    "tape": "^4.2.1"
+  }
+}

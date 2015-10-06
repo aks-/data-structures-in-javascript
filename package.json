@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "find . -name '*test.js' | xargs tape"
+    "test": "find . -path ./node_modules -prune -o -name '*test.js' | grep test | xargs tape"
   },
   "repository": {
     "type": "git",
